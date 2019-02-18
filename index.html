@@ -184,7 +184,7 @@
 <h2 id="2-SHADER参数"><a href="#2-SHADER参数" class="headerlink" title="2.SHADER参数"></a>2.SHADER参数</h2><p><img src="/images/2.18.02.png" alt="“图片描述”"></p>
 <h2 id="3-拆分理解"><a href="#3-拆分理解" class="headerlink" title="3.拆分理解"></a>3.拆分理解</h2><h3 id="Normal模块"><a href="#Normal模块" class="headerlink" title="Normal模块"></a>Normal模块</h3><p><img src="/images/2.18.03.png" alt="“图片描述”"><br>法线贴图和法向量混合</p>
 <h3 id="MainLight模块"><a href="#MainLight模块" class="headerlink" title="MainLight模块"></a>MainLight模块</h3><p>区别于ShaderLab和ShaderForge ShaderGraph没有光的方向（如UnityWorldSpeceLightDir？）<br>所以需要寻找自定义的光源节点而且因为2018 LWRP渲染管线的不稳定找起来也是比较麻烦可以去Ciro Continisio的GitHub去下载这个节点<br>有了光的节点我们就可以。。。</p>
-<h4 id="BllinPhong模型了"><a href="#BllinPhong模型了" class="headerlink" title="BllinPhong模型了"></a>BllinPhong模型了</h4><p>H=L(光向量)+V（视向量）<br>Dot（N，H）</p>
+<h4 id="BllinPhong光照模型"><a href="#BllinPhong光照模型" class="headerlink" title="BllinPhong光照模型"></a>BllinPhong光照模型</h4><p>H=L(光向量)+V（视向量）<br>Dot（N，H）</p>
 <h4 id="Diffuse漫反射"><a href="#Diffuse漫反射" class="headerlink" title="Diffuse漫反射"></a>Diffuse漫反射</h4><p>Dot(N,L)</p>
 <h4 id="Albedo贴图和Lightcolor融合"><a href="#Albedo贴图和Lightcolor融合" class="headerlink" title="Albedo贴图和Lightcolor融合"></a>Albedo贴图和Lightcolor融合</h4><h4 id="光衰减和光照模型（没什么太大的作用）"><a href="#光衰减和光照模型（没什么太大的作用）" class="headerlink" title="光衰减和光照模型（没什么太大的作用）"></a>光衰减和光照模型（没什么太大的作用）</h4><h3 id="Brush模块"><a href="#Brush模块" class="headerlink" title="Brush模块"></a>Brush模块</h3><p><img src="/images/2.18.04.png" alt="“图片描述”"><br>计算bllin Phong模型</p>
 <p><img src="/images/2.18.05.png" alt="“图片描述”"><br>反向重映射 留出高光部位遮罩<br>和Texture相乘融合<br>SmoothStep 只留下笔刷痕迹<br>和_SpecularStr 相乘增加强度</p>
@@ -203,6 +203,16 @@
 <p>上面的时白色强光<br>下边为模型边缘光<br>强光遮住模型光所以一个管上一个管下<br>（搭配HDR可以更加酷炫）</p>
 <p><img src="/images/2.18.12.png" alt="“图片描述”"></p>
 <p>模型效果</p>
+<h3 id="Specular模块"><a href="#Specular模块" class="headerlink" title="Specular模块"></a>Specular模块</h3><p>因为模型为willu提取的<br>所以我下载来的时候有三张贴图</p>
+<p><img src="/images/2.18.14.png" alt="“图片描述”"><br>分别为颜色贴图 法线贴图 和spm贴图（难道是光泽度和金属的混合贴图？spe+met???）<br>因为使用的时Unity5.0的Brdf<br>我选择的时Specular流<br>经过各个通道的变换法线RGB贴图应该就是光泽度贴图………吧？<br>于是就如图所示用上了<br><img src="/images/2.18.15.png" alt="“图片描述”"></p>
+<p>体征了数值法线效果以外的不错~</p>
+<p><img src="/images/2.18.16.png" alt="“图片描述”"></p>
+<p>具体表现在这里（挑了最明显的但是好像也不大明显哈…..）</p>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>这个就算了吧 就是合吧合吧。。。<br>调整 寻找错误<br>结束</p>
+<p>##结束</p>
+<p><img src="/images/2.18.17.png" alt="“图片描述”"><br>最后送大家福利~~<br>还是那句话 本人还在学习中 并不是什么大佬 可能在说明的时候不太准确或着不正确，请大家多多包涵批评和指教<br>也希望大家可以互相进步</p>
+<p>那么就到这里吧 大家晚安</p>
+<p>GOOD NIGHT~</p>
 
       
 
@@ -495,11 +505,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color5">整理收集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">整理收集</a>
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
             
             <div class="clearfix"></div>
