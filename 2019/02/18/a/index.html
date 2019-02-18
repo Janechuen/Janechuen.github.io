@@ -8,22 +8,32 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Unity实现《塞尔达 荒野之息》卡通着色Shader | -COOK WITH PIG-</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？这个效果是由一下大块组成首先我使用的是Shader Graph Unity的">
+  <meta name="description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？效果是由以下几大块组成首先我使用的是Shader Graph Unity的版">
 <meta name="keywords" content="Shader">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity实现《塞尔达 荒野之息》卡通着色Shader">
 <meta property="og:url" content="http://yoursite.com/2019/02/18/a/index.html">
 <meta property="og:site_name" content="-COOK WITH PIG-">
-<meta property="og:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？这个效果是由一下大块组成首先我使用的是Shader Graph Unity的">
+<meta property="og:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？效果是由以下几大块组成首先我使用的是Shader Graph Unity的版">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Zelda%20Shader.gif">
 <meta property="og:image" content="http://yoursite.com/images/2.18.01.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.02.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.03.png">
-<meta property="og:updated_time" content="2019-02-18T13:32:12.596Z">
+<meta property="og:image" content="http://yoursite.com/images/2.18.04.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.05.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.09.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.10.png">
+<meta property="og:image" content="http://yoursite.com/images/Dasz.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2.18.11.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.13.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.07.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.08.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.12.png">
+<meta property="og:updated_time" content="2019-02-18T15:29:26.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity实现《塞尔达 荒野之息》卡通着色Shader">
-<meta name="twitter:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？这个效果是由一下大块组成首先我使用的是Shader Graph Unity的">
+<meta name="twitter:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢 1.怎么组成的？效果是由以下几大块组成首先我使用的是Shader Graph Unity的版">
 <meta name="twitter:image" content="http://yoursite.com/images/Zelda%20Shader.gif">
   
     <link rel="alternative" href="/atom.xml" title="-COOK WITH PIG-" type="application/atom+xml">
@@ -187,10 +197,29 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/images/Zelda Shader.gif" alt="“图片描述”"><br>前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。<br>所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的<del>“折腾”</del>把我总结的一些点进行分享。<br>因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢</p>
-<h2 id="1-怎么组成的？"><a href="#1-怎么组成的？" class="headerlink" title="1.怎么组成的？"></a>1.怎么组成的？</h2><p><img src="/images/2.18.01.png" alt="“图片描述”"><br>这个效果是由一下大块组成<br>首先我使用的是Shader Graph Unity的版本为2018.3<br>1.Normal模块 （把法线从切线空间矩阵转换到世界空间）<br>2.MainLight模块 （因为sg没有光源的相关节点导致做很多东西都不方便 需要自己找大佬的自定义节点）<br>3.Brush模块 （Bllin Phong光照模型 计算遮罩实现笔刷效果）<br>4.Rim模块 （实现当光直射时为白色 暗部边缘也有较弱的边缘光）<br>5.Spcular模块 （使用贴图让模型有光泽度）<br>6.融合</p>
+<h2 id="1-怎么组成的？"><a href="#1-怎么组成的？" class="headerlink" title="1.怎么组成的？"></a>1.怎么组成的？</h2><p><img src="/images/2.18.01.png" alt="“图片描述”"><br>效果是由以下几大块组成<br>首先我使用的是Shader Graph Unity的版本为2018.3<br>1.Normal模块 （把法线从切线空间矩阵转换到世界空间）<br>2.MainLight模块 （因为sg没有光源的相关节点导致做很多东西都不方便 需要自己找大佬的自定义节点）<br>3.Brush模块 （Bllin Phong光照模型 计算遮罩实现笔刷效果）<br>4.Rim模块 （实现当光直射时为白色 暗部边缘也有较弱的边缘光）<br>5.Spcular模块 （使用贴图让模型有光泽度）<br>6.融合</p>
 <h2 id="2-SHADER参数"><a href="#2-SHADER参数" class="headerlink" title="2.SHADER参数"></a>2.SHADER参数</h2><p><img src="/images/2.18.02.png" alt="“图片描述”"></p>
 <h2 id="3-拆分理解"><a href="#3-拆分理解" class="headerlink" title="3.拆分理解"></a>3.拆分理解</h2><h3 id="Normal模块"><a href="#Normal模块" class="headerlink" title="Normal模块"></a>Normal模块</h3><p><img src="/images/2.18.03.png" alt="“图片描述”"><br>法线贴图和法向量混合</p>
-<h3 id="MainLight"><a href="#MainLight" class="headerlink" title="MainLight"></a>MainLight</h3><p>区别于ShaderLab和ShaderForge ShaderGraph没有光的方向（如UnityWorldSpeceLightDir？）<br>所以需要寻找自定义的光源节点而且因为2018 LWRP渲染管线的不稳定找起来也是比较麻烦可以去Ciro Continisio的GitHub去下载这个节点<br>有了光的节点我们就可以算出BllinPhong模型了<br>$$<br>H=L(光向量)+V（视向量）<br>Dot（N，H）<br>$$<br>还有Diffuse漫反射<br>$$<br>Dot(N,L)<br>$$</p>
+<h3 id="MainLight模块"><a href="#MainLight模块" class="headerlink" title="MainLight模块"></a>MainLight模块</h3><p>区别于ShaderLab和ShaderForge ShaderGraph没有光的方向（如UnityWorldSpeceLightDir？）<br>所以需要寻找自定义的光源节点而且因为2018 LWRP渲染管线的不稳定找起来也是比较麻烦可以去Ciro Continisio的GitHub去下载这个节点<br>有了光的节点我们就可以。。。</p>
+<h4 id="BllinPhong模型了"><a href="#BllinPhong模型了" class="headerlink" title="BllinPhong模型了"></a>BllinPhong模型了</h4><p>H=L(光向量)+V（视向量）<br>Dot（N，H）</p>
+<h4 id="Diffuse漫反射"><a href="#Diffuse漫反射" class="headerlink" title="Diffuse漫反射"></a>Diffuse漫反射</h4><p>Dot(N,L)</p>
+<h4 id="Albedo贴图和Lightcolor融合"><a href="#Albedo贴图和Lightcolor融合" class="headerlink" title="Albedo贴图和Lightcolor融合"></a>Albedo贴图和Lightcolor融合</h4><h4 id="光衰减和光照模型（没什么太大的作用）"><a href="#光衰减和光照模型（没什么太大的作用）" class="headerlink" title="光衰减和光照模型（没什么太大的作用）"></a>光衰减和光照模型（没什么太大的作用）</h4><h3 id="Brush模块"><a href="#Brush模块" class="headerlink" title="Brush模块"></a>Brush模块</h3><p><img src="/images/2.18.04.png" alt="“图片描述”"><br>计算bllin Phong模型</p>
+<p><img src="/images/2.18.05.png" alt="“图片描述”"><br>反向重映射 留出高光部位遮罩<br>和Texture相乘融合<br>SmoothStep 只留下笔刷痕迹<br>和_SpecularStr 相乘增加强度</p>
+<p><img src="/images/2.18.09.png" alt="“图片描述”"></p>
+<p>此为bllinPhong模型反向取高光范围</p>
+<p>REMAP节点：<br>根据输入In在InMinMax中的插值，计算输出。 比如输入In为0，InMinMax时（-10，10），那么In在InMinMax的<br>位置就是0.5，如果OutMinMax为（0，10），那么输出Out就是5<br> Out = OutMinMax.x + (In - InMinMax.x) * (OutMinMax.y - OutMinMax.x) / (InMinMax.y -<br>InMinMax.x)<br><img src="/images/2.18.10.png" alt="“图片描述”"></p>
+<p>和贴图融和<br><img src="/images/Dasz.jpg" alt="“图片描述”"><br>自制网格贴图奉上</p>
+<p><img src="/images/2.18.11.png" alt="“图片描述”"></p>
+<p>测试结果（我觉地还不错~）</p>
+<p><img src="/images/2.18.13.png" alt="“图片描述”"></p>
+<p>模型效果</p>
+<h3 id="Rim模块"><a href="#Rim模块" class="headerlink" title="Rim模块"></a>Rim模块</h3><p>上为我测试时做的<br>想要实现的是当前视角下光90度垂直于模型上则放射的边缘光为强烈的白色<br>用光方向和视向量相乘为1时则代表为90度<br>接下来就是甩出来而已了<br><img src="/images/2.18.07.png" alt="“图片描述”"></p>
+<p>测试时90度为白色 以此往下为淡蓝色</p>
+<p><img src="/images/2.18.08.png" alt="“图片描述”"></p>
+<p>所以此步的意义就是</p>
+<p>上面的时白色强光<br>下边为模型边缘光<br>强光遮住模型光所以一个管上一个管下<br>（搭配HDR可以更加酷炫）</p>
+<p><img src="/images/2.18.12.png" alt="“图片描述”"></p>
+<p>模型效果</p>
 
       
 
@@ -419,11 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">整理收集</a>
+                <a href="javascript:void(0)" class="js-tag color5">life</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">life</a>
+                <a href="javascript:void(0)" class="js-tag color5">整理收集</a>
               </li>
             
             <div class="clearfix"></div>
