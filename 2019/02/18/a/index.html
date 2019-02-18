@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Unity实现《塞尔达 荒野之息》卡通着色Shader | -COOK WITH PIG-</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~） 1.怎么组成的？效果是由以下几大块组成首先我使用的是Sh">
+  <meta name="description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~）   1.怎么组成的？效果是由以下几大块组成首先我使用的是">
 <meta name="keywords" content="Shader">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity实现《塞尔达 荒野之息》卡通着色Shader">
 <meta property="og:url" content="http://yoursite.com/2019/02/18/a/index.html">
 <meta property="og:site_name" content="-COOK WITH PIG-">
-<meta property="og:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~） 1.怎么组成的？效果是由以下几大块组成首先我使用的是Sh">
+<meta property="og:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~）   1.怎么组成的？效果是由以下几大块组成首先我使用的是">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/Zelda%20Shader.gif">
 <meta property="og:image" content="http://yoursite.com/images/2.18.01.png">
@@ -27,6 +27,7 @@
 <meta property="og:image" content="http://yoursite.com/images/Dasz.jpg">
 <meta property="og:image" content="http://yoursite.com/images/2.18.11.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.13.png">
+<meta property="og:image" content="http://yoursite.com/images/2.18.06.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.07.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.08.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.12.png">
@@ -34,10 +35,10 @@
 <meta property="og:image" content="http://yoursite.com/images/2.18.15.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.16.png">
 <meta property="og:image" content="http://yoursite.com/images/2.18.17.png">
-<meta property="og:updated_time" content="2019-02-18T15:50:47.092Z">
+<meta property="og:updated_time" content="2019-02-18T16:05:00.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity实现《塞尔达 荒野之息》卡通着色Shader">
-<meta name="twitter:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~） 1.怎么组成的？效果是由以下几大块组成首先我使用的是Sh">
+<meta name="twitter:description" content="前言前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的“折腾”把我总结的一些点进行分享。因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢（坚持看到最后的好孩子们有福利哦~）   1.怎么组成的？效果是由以下几大块组成首先我使用的是">
 <meta name="twitter:image" content="http://yoursite.com/images/Zelda%20Shader.gif">
   
     <link rel="alternative" href="/atom.xml" title="-COOK WITH PIG-" type="application/atom+xml">
@@ -201,6 +202,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/images/Zelda Shader.gif" alt="“图片描述”"><br>前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。<br>所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的<del>“折腾”</del>把我总结的一些点进行分享。<br>因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢<br>（坚持看到最后的好孩子们有福利哦~）</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1309814540&auto=1&height=66"></iframe>
+
 <h2 id="1-怎么组成的？"><a href="#1-怎么组成的？" class="headerlink" title="1.怎么组成的？"></a>1.怎么组成的？</h2><p><img src="/images/2.18.01.png" alt="“图片描述”"><br>效果是由以下几大块组成<br>首先我使用的是Shader Graph Unity的版本为2018.3<br>1.Normal模块 （把法线从切线空间矩阵转换到世界空间）<br>2.MainLight模块 （因为sg没有光源的相关节点导致做很多东西都不方便 需要自己找大佬的自定义节点）<br>3.Brush模块 （Bllin Phong光照模型 计算遮罩实现笔刷效果）<br>4.Rim模块 （实现当光直射时为白色 暗部边缘也有较弱的边缘光）<br>5.Spcular模块 （使用贴图让模型有光泽度）<br>6.融合</p>
 <h2 id="2-SHADER参数"><a href="#2-SHADER参数" class="headerlink" title="2.SHADER参数"></a>2.SHADER参数</h2><p><img src="/images/2.18.02.png" alt="“图片描述”"></p>
 <h2 id="3-拆分理解"><a href="#3-拆分理解" class="headerlink" title="3.拆分理解"></a>3.拆分理解</h2><h3 id="Normal模块"><a href="#Normal模块" class="headerlink" title="Normal模块"></a>Normal模块</h3><p><img src="/images/2.18.03.png" alt="“图片描述”"><br>法线贴图和法向量混合</p>
@@ -217,7 +220,8 @@
 <p>测试结果（我觉地还不错~）</p>
 <p><img src="/images/2.18.13.png" alt="“图片描述”"></p>
 <p>模型效果</p>
-<h3 id="Rim模块"><a href="#Rim模块" class="headerlink" title="Rim模块"></a>Rim模块</h3><p>上为我测试时做的<br>想要实现的是当前视角下光90度垂直于模型上则放射的边缘光为强烈的白色<br>用光方向和视向量相乘为1时则代表为90度<br>接下来就是甩出来而已了<br><img src="/images/2.18.07.png" alt="“图片描述”"></p>
+<h3 id="Rim模块"><a href="#Rim模块" class="headerlink" title="Rim模块"></a>Rim模块</h3><p><img src="/images/2.18.06.png" alt="“图片描述”"></p>
+<p>上为我测试时做的<br>可以看见白色下面为蓝 记住 下面有用<br>想要实现的是当前视角下光90度垂直于模型上则放射的边缘光为强烈的白色<br>用光方向和视向量相乘为1时则代表为90度<br>接下来就是甩出来而已了<br><img src="/images/2.18.07.png" alt="“图片描述”"></p>
 <p>测试时90度为白色 以此往下为淡蓝色</p>
 <p><img src="/images/2.18.08.png" alt="“图片描述”"></p>
 <p>所以此步的意义就是</p>
@@ -230,7 +234,7 @@
 <p><img src="/images/2.18.16.png" alt="“图片描述”"></p>
 <p>具体表现在这里（挑了最明显的但是好像也不大明显哈…..）</p>
 <h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>这个就算了吧 就是合吧合吧。。。<br>调整 寻找错误<br>结束</p>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p><img src="/images/2.18.17.png" alt="“图片描述”"><br>最后送大家福利~~<br>还是那句话 本人还在学习中 并不是什么大佬 可能在说明的时候不太准确或着不正确，请大家多多包涵批评和指教<br>也希望大家可以互相进步</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p><img src="/images/2.18.17.png" alt="“图片描述”"><br>最后送大家福利塞尔达小姐姐~~<br>还是那句话 本人还在学习中 并不是什么大佬 可能在说明的时候不太准确或着不正确，请大家多多包涵批评和指教<br>也希望大家可以互相进步</p>
 <p>那么就到这里吧 大家晚安<br>懒得检查错别字了</p>
 <p>GOOD NIGHT~</p>
 
