@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/images/Zelda Shader.gif" alt="“图片描述”"><br>前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。<br>所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的<del>“折腾”</del>把我总结的一些点进行分享。<br>因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/images/Zelda Shader.gif" alt="“图片描述”"><br>前段时间在Unity Connect上看到了技术经理Ciro Continisio的技术文章深受启发。<br>所以就想在Unity里也呈现出塞尔达那样优秀的游戏画面，于是经过我这几天的<del>“折腾”</del>把我总结的一些点进行分享。<br>因为还在学习 如果有不对的地方也是很“迫切”的希望大家批评与指教QQ：87822396 谢谢<br>（坚持看到最后的好孩子们有福利哦~）</p>
 <h2 id="1-怎么组成的？"><a href="#1-怎么组成的？" class="headerlink" title="1.怎么组成的？"></a>1.怎么组成的？</h2><p><img src="/images/2.18.01.png" alt="“图片描述”"><br>效果是由以下几大块组成<br>首先我使用的是Shader Graph Unity的版本为2018.3<br>1.Normal模块 （把法线从切线空间矩阵转换到世界空间）<br>2.MainLight模块 （因为sg没有光源的相关节点导致做很多东西都不方便 需要自己找大佬的自定义节点）<br>3.Brush模块 （Bllin Phong光照模型 计算遮罩实现笔刷效果）<br>4.Rim模块 （实现当光直射时为白色 暗部边缘也有较弱的边缘光）<br>5.Spcular模块 （使用贴图让模型有光泽度）<br>6.融合</p>
 <h2 id="2-SHADER参数"><a href="#2-SHADER参数" class="headerlink" title="2.SHADER参数"></a>2.SHADER参数</h2><p><img src="/images/2.18.02.png" alt="“图片描述”"></p>
 <h2 id="3-拆分理解"><a href="#3-拆分理解" class="headerlink" title="3.拆分理解"></a>3.拆分理解</h2><h3 id="Normal模块"><a href="#Normal模块" class="headerlink" title="Normal模块"></a>Normal模块</h3><p><img src="/images/2.18.03.png" alt="“图片描述”"><br>法线贴图和法向量混合</p>
